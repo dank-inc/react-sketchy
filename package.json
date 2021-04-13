@@ -1,8 +1,33 @@
 {
   "name": "react-sketchy",
   "version": "0.1.0",
-  "private": true,
+  "author": "Elijah Lucian",
+  "description": "React Wrapper component for sketchy!",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dank-inc/react-sketchy"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "react",
+    "creative",
+    "genart",
+    "sketchy"
+  ],
   "dependencies": {
+    "@dank-inc/sketchy": "^0.13.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "react-scripts": "4.0.3",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -10,9 +35,6 @@
     "@types/node": "^12.20.7",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
     "typescript": "^4.2.4",
     "web-vitals": "^1.1.1"
   },
@@ -20,7 +42,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "tsc --noEmit",
+    "compile": "rm -rf dist && tsc -p tsconfig-lib.json",
+    "deploy": "npm run compile && npm publish"
   },
   "eslintConfig": {
     "extends": [
