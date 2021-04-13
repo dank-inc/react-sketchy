@@ -9,8 +9,8 @@ export const App = () => {
         animate
         dimensions={[400, 400]}
         sketch={({ context, width, height }) => {
-          // init
           context.clearRect(0, 0, width, height);
+          // init
 
           return ({ context, width, height, t, setFillStyle }) => {
             // draw
