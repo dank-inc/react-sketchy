@@ -8,7 +8,7 @@ import Sketchy, {
 type Props = SketchConfig & {
   sketch: Sketchy.Sketch;
   className?: string;
-  elRef?: MutableRefObject<HTMLElement>;
+  elRef?: MutableRefObject<HTMLElement | null>;
 };
 
 export const ReactSketchy = ({
