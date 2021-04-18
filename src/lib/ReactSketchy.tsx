@@ -26,7 +26,7 @@ export const ReactSketchy = ({
 
     const el = elRef?.current || ref.current;
 
-    loadSketch(
+    const params = loadSketch(
       sketch,
       createParams({
         element: el,
@@ -37,6 +37,7 @@ export const ReactSketchy = ({
     );
 
     return () => {
+      params.animated = false;
       const child = el.firstChild;
       child && el.removeChild(child);
     };
