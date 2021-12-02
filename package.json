@@ -1,6 +1,6 @@
 {
   "name": "@dank-inc/react-sketchy",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Elijah Lucian",
   "description": "React Wrapper component for sketchy!",
   "repository": {
@@ -20,7 +20,7 @@
     "sketchy"
   ],
   "dependencies": {
-    "@dank-inc/sketchy": "^0.20.0"
+    "@dank-inc/sketchy": "^0.21.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
