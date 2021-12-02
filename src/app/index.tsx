@@ -1,30 +1,28 @@
-import { Sketch } from "@dank-inc/sketchy";
-import { hsl } from "@dank-inc/sketchy/lib/helpers/color";
-import { ReactSketchy } from "../lib/ReactSketchy";
+import { useState } from "react";
+import { SketchBrowser, ReactSketchy } from "../lib";
+import sketches from "../sketches";
 import "./index.css";
 
-const sketch: Sketch = ({ context, width, height }) => {
-  context.clearRect(0, 0, width, height);
-
-  return ({ context, width, height, t, setFillStyle }) => {
-    context.clearRect(0, 0, width, height);
-    const qw = width / 2;
-    const qh = height / 4;
-    setFillStyle(hsl(t(), 0.5, 0.5));
-
-    context.save();
-    context.translate(width / 2, height / 2);
-    context.rotate(t(1));
-
-    context.fillRect(-qw, -qh, width / 2, height / 2);
-    context.restore();
-  };
-};
-
 export const App = () => {
+  const [multi, setMulti] = useState(false);
+
+  const toggle = () => setMulti(!multi);
+
   return (
     <div>
-      <ReactSketchy animate dimensions={[400, 400]} sketch={sketch} />
+      <button onClick={toggle}>Multi Mode</button>
+      {multi ? (
+        <SketchBrowser animate sketches={sketches}>
+          <ReactSketchy />
+        </SketchBrowser>
+      ) : (
+        <ReactSketchy
+          data={{}}
+          animate
+          dimensions={[700, 700]}
+          sketch={sketches[0]}
+        />
+      )}
     </div>
   );
 };

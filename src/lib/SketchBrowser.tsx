@@ -2,7 +2,7 @@ import { Sketch } from "@dank-inc/sketchy";
 import React, { cloneElement, useEffect, useState } from "react";
 
 type Props = {
-  sketches: Sketch[];
+  sketches: Sketch<any>[];
   children: React.ReactElement;
   controls?: boolean;
   dimensions?: [number, number];
@@ -41,7 +41,7 @@ export const SketchBrowser = ({
     <>
       <div className="sketch-nav">
         <button onClick={prev}>Prev</button>
-        <h1>Sketches!</h1>
+        <h3>Sketches!</h3>
         <p>
           index: {index + 1} / {sketches.length}
         </p>

@@ -5,8 +5,10 @@ import Sketchy, {
   SketchConfig,
 } from "@dank-inc/sketchy";
 
-type Props = SketchConfig & {
-  sketch: Sketchy.Sketch;
+// TODO: Make generic w/ data type ub params
+
+type Props = Partial<SketchConfig<any>> & {
+  sketch?: Sketchy.Sketch<any>;
   className?: string;
   elRef?: MutableRefObject<HTMLElement | null>;
 };
@@ -27,12 +29,13 @@ export const ReactSketchy = ({
     const el = elRef?.current || ref.current;
 
     const params = loadSketch(
-      sketch,
+      sketch!,
       createParams({
         element: el,
         dimensions,
         animate,
         timeOffset,
+        data: {},
       })
     );
 
