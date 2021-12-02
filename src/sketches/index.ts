@@ -1,5 +1,6 @@
 import { createSketch } from "@dank-inc/sketchy";
 import { hsl } from "@dank-inc/sketchy/lib/helpers/color";
+import keepItGay from "./keep-it-gay";
 
 const basic = createSketch(({ context, width, height }) => {
   context.clearRect(0, 0, width, height);
@@ -19,4 +20,4 @@ const basic = createSketch(({ context, width, height }) => {
   };
 });
 
-export default [basic];
+export default [basic, keepItGay];

@@ -7,6 +7,7 @@ type Props = {
   controls?: boolean;
   dimensions?: [number, number];
   animate?: boolean;
+  wrap?: boolean;
 };
 
 export const SketchBrowser = ({
@@ -15,6 +16,7 @@ export const SketchBrowser = ({
   children,
   dimensions = [400, 400],
   animate,
+  wrap,
 }: Props) => {
   const [index, setIndex] = useState(0);
 
@@ -32,9 +34,11 @@ export const SketchBrowser = ({
 
   const prev = () => {
     if (index > 0) setIndex(index - 1);
+    else setIndex(sketches.length - 1);
   };
   const next = () => {
     if (index < sketches.length - 1) setIndex(index + 1);
+    else setIndex(0);
   };
 
   return (
