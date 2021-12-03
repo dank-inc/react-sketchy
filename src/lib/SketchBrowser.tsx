@@ -2,7 +2,7 @@ import { Sketch } from "@dank-inc/sketchy";
 import React, { cloneElement, useEffect, useState } from "react";
 
 type Props = {
-  sketches: Sketch<any>[];
+  sketches: Sketch[];
   children: React.ReactElement;
   controls?: boolean;
   dimensions?: [number, number];

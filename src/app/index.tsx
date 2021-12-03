@@ -16,12 +16,7 @@ export const App = () => {
           <ReactSketchy />
         </SketchBrowser>
       ) : (
-        <ReactSketchy
-          data={{}}
-          animate
-          dimensions={[700, 700]}
-          sketch={sketches[0]}
-        />
+        <ReactSketchy animate dimensions={[700, 700]} sketch={sketches[0]} />
       )}
     </div>
   );

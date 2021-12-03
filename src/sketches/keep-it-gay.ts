@@ -6,7 +6,7 @@ import { hex, hsl } from "@dank-inc/sketchy/lib/helpers/color";
 // type the function, and all params are implicitly typed
 export default createSketch((params) => {
   // destructure helper functions and convenience variables
-  const { context, setFillStyle, setFilter, sin, cos, lerp } = params;
+  const { context, setFillStyle, sin, cos, lerp } = params;
 
   // initialize your sketch and objects
   const points = mapXY<Vec2>(15, 15, (u, v) => [u, v]);
