@@ -20,7 +20,7 @@
     "sketchy"
   ],
   "dependencies": {
-    "@dank-inc/sketchy": "^0.23.0"
+    "@dank-inc/sketchy": "^0.26.3"
   },
   "peerDependencies": {
     "react": "^17.0.2",

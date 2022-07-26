@@ -1,16 +1,20 @@
 import { MutableRefObject, useEffect, useRef } from "react";
-import Sketchy, {
+import {
   createParams,
+  load3dSketch,
   loadSketch,
-  SketchConfig,
+  create3dParams,
+  Sketch3D,
+  Sketch,
 } from "@dank-inc/sketchy";
 
-// TODO: Make generic w/ data type ub params
-
-type Props = Partial<SketchConfig> & {
-  sketch?: Sketchy.Sketch;
+type Props = {
+  type: "3d" | "2d";
+  sketch: Sketch | Sketch3D;
   className?: string;
   elRef?: MutableRefObject<HTMLElement | null>;
+  dimensions?: [number, number];
+  animate?: boolean;
 };
 
 export const ReactSketchy = ({
@@ -18,34 +22,44 @@ export const ReactSketchy = ({
   dimensions,
   className,
   animate,
-  timeOffset,
   elRef,
+  type,
 }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!ref.current) return;
-
     const el = elRef?.current || ref.current;
 
-    const params = loadSketch(
-      sketch!,
-      createParams({
-        element: el,
-        dimensions,
-        animate,
-        timeOffset,
-      })
-    );
+    const params =
+      type === "3d"
+        ? load3dSketch(
+            sketch as Sketch3D,
+            create3dParams({
+              containerId: "dank-vision",
+              w: dimensions?.[0],
+              h: dimensions?.[1],
+              animated: animate,
+            })
+          )
+        : loadSketch(
+            sketch as Sketch,
+            createParams({
+              element: el,
+              dimensions,
+              animate,
+            })
+          );
 
     return () => {
-      params.animated = false;
+      if (params) params.animated = false;
+
       const child = el.firstChild;
       child && el.removeChild(child);
     };
-  }, [sketch, ref, elRef, dimensions, animate, timeOffset]);
+  }, [sketch, ref, elRef, dimensions, animate, type]);
 
   if (elRef) return null;
 
-  return <div className={className} ref={ref}></div>;
+  return <div className={className} id="dank-vision" ref={ref}></div>;
 };
